@@ -129,7 +129,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Functors.hpp" />
     <ClInclude Include="Impl.hpp" />
+    <ClInclude Include="Function.hpp" />
+    <ClInclude Include="Operators.hpp" />
     <ClInclude Include="Vector.hpp" />
   </ItemGroup>
   <ItemGroup>

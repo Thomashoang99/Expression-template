@@ -18,7 +18,16 @@
     <ClInclude Include="Vector.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Operators.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Function.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="Impl.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Functors.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

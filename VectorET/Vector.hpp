@@ -4,23 +4,12 @@
 
 namespace et
 {
-	using namespace et_impl;
+	using namespace impl;
 
 	template<typename T, typename Allocator = std::allocator<T>>
 	class et_vector : public Expression<T, et_vector<T, Allocator>>
 	{
 		std::vector<T, Allocator> elems{};
-
-	public:
-		using value_type = T;
-		using allocator_type = Allocator;
-		using size_type = std::size_t;
-		using reference = T&;
-		using const_reference = const T&;
-		using iterator = typename decltype(elems)::iterator;
-		using const_iterator = typename decltype(elems)::const_iterator;
-		using reverse_iterator = typename std::reverse_iterator<iterator>;
-		using const_reverse_iterator = typename std::reverse_iterator<const_iterator>;
 
 	public:
 		et_vector() = default;
@@ -78,7 +67,7 @@ namespace et
 			return elems[i];
 		}
 
-		size_type size() const noexcept
+		auto size() const noexcept
 		{
 			return elems.size();
 		}
@@ -114,23 +103,3 @@ namespace et
 };
 
 
-namespace lazy
-{
-	using namespace et_operators;
-	using namespace et_impl;
-
-	template<typename T, typename E, typename Op>
-	decltype(auto) evaluate(const VecReduction<T, E, Op>& f)
-	{
-		return f.eval();
-	}
-
-	template<typename T, typename E1, typename E2>
-	decltype(auto) dot_product(const Expression<T, E1>& lhs, const Expression<T, E2>& rhs)
-	{
-		static_assert(std::is_arithmetic_v<T>);
-		const auto& mul_result = lhs * rhs;
-		return VecReduction<T, decltype(mul_result), std::plus<>>
-			(mul_result, std::plus<>());
-	}
-};
